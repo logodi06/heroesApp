@@ -1,1 +1,24 @@
-<p>heroe-tarjeta works!</p>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>{{heroe.superhero}}</mat-card-title>
+        <mat-card-subtitle>{{heroe.alter_ego}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="heroe | imagen" alt="Superheroe">
+    <mat-card-content>
+        <h3>{{heroe.publisher}}</h3>
+        <p>
+            <strong>Primera aparición</strong> {{heroe.first_appearance }}
+            <br>
+            <strong>Personajes: </strong> {{heroe.characters}}
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <!-- Uso de rutas relativas: Estas ayudan a no tener que poner la ruta completa de donde
+        se encuentra el archivo, pues está quedaría muy larga.
+        Al usar rutas relativas se puede imponer la ruta a la que se requiere entrar, es como si 
+        lo buscara  -->
+        <button mat-button color="warn" [routerLink]="['/heroes/editar', heroe.id]">Editar</button>
+        <button mat-button color="info" [routerLink]="['/heroes', heroe.id]" [routerLink]="['/heroes', heroe.id]">Ver más</button>
+
+    </mat-card-actions>
+</mat-card>

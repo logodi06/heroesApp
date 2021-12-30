@@ -1,1 +1,36 @@
-<p>buscar works!</p>
+<div fxLayout="column">
+    <div>
+        <h1>Buscador de Heroés</h1>
+        <mat-divider></mat-divider>
+    </div>
+    <div fxLayout="column">
+        <h3>Buscador</h3>
+
+        <mat-form-field>
+            <!-- La función buscando() trae el arreglo de heroes para sugerencias
+             ngModel es lo que se muestra cuando se selecciona una opción -->
+            <input (input)="buscando()" type="text" placeholder="Pick one" aria-label="Number" [(ngModel)]="termino" matInput [matAutocomplete]="auto">
+
+            <!-- OPtionSelected, manda un evento enviando información de la opción seleccionada -->
+            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="opcionSeleccionada($event)">
+                <!-- de la función de buscando se obtiene el arreglo de heroes y con el ngfor solo se 
+                recorre el arreglo para mostrar las sugerencias
+                Con el value se manda se manda información del hereo que se esta mostrando y en su caso 
+            del que será seleccionado, esto sirve para evaluar si se está seleccionando un hereo que exista
+            para mostrar la información, si no para que se muestre el de no se encontro termino-->
+                <mat-option *ngFor="let heroe of heroes" [value]="heroe">
+                    {{heroe.superhero}}
+                </mat-option>
+                <mat-option value="" *ngIf="heroes.length === 0 && termino.trim().length > 0">
+                    No se encontró nada con el termino {{termino}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+    </div>
+    <div>
+        <pre>{{heroeSeleccionado | json}}</pre>
+    </div>
+    <div *ngIf="heroeSeleccionado">
+        <app-heroe-tarjeta [heroe]="heroeSeleccionado"></app-heroe-tarjeta>
+    </div>
+</div>

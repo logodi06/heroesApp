@@ -11,6 +11,9 @@ import { HeroeComponent } from './pages/heroe/heroe.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ListadoComponent } from './pages/listado/listado.component';
 import { HeroeTarjetaComponent } from './components/heroe-tarjeta/heroe-tarjeta.component';
+import { ImagenPipe } from './pipes/imagenes.pipe';
+import { FormsModule } from '@angular/forms';
+import { ConfirmarComponent } from './components/confirmar/confirmar.component';
 
 
 
@@ -23,11 +26,14 @@ import { HeroeTarjetaComponent } from './components/heroe-tarjeta/heroe-tarjeta.
     HeroeComponent,
     HomeComponent,
     ListadoComponent,
-    HeroeTarjetaComponent
+    HeroeTarjetaComponent,
+    ImagenPipe,
+    ConfirmarComponent
   ],
   imports: [
     CommonModule,
     FlexLayoutModule,
+    FormsModule,
     MaterialModule,
     HeroesRoutingModule
   ]

@@ -1,15 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Heroe, Publisher } from '../../interfaces/heroes.interface';
 
 @Component({
   selector: 'app-heroe-tarjeta',
   templateUrl: './heroe-tarjeta.component.html',
-  styleUrls: ['./heroe-tarjeta.component.css']
+  styles: [
+    `
+    mat-card{
+      margin-top: 20px;
+    }
+  `
+  ]
+ 
 })
-export class HeroeTarjetaComponent implements OnInit {
+export class HeroeTarjetaComponent  {
+  @Input() heroe!: Heroe;
+ // @Input() heroes: Heroe[] = [];
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
 
 }
